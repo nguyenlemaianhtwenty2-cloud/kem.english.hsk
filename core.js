@@ -103,9 +103,9 @@ const iconFill = n => icon(n, "fill");
 
 /* ===== Band & lộ trình ===== */
 const BANDS = [
-  { id: 0, range: "10–300", label: "Mất gốc", goal: 300, min: 10, desc: "Xây nền: từ loại, các thì cơ bản, từ vựng văn phòng – du lịch, làm quen Part 1 và Part 2." },
-  { id: 1, range: "300–450", label: "Cơ bản", goal: 450, min: 300, desc: "Mở rộng thì hoàn thành, hòa hợp chủ vị, so sánh, giới từ; bắt đầu Part 5 và nghe hội thoại ngắn." },
-  { id: 2, range: "450–650", label: "Trung cấp", goal: 650, min: 450, desc: "Bị động, mệnh đề quan hệ, liên từ, V-ing/To V; luyện Part 3–4 và đọc đoạn Part 6." },
+  { id: 0, range: "10–300", label: "Mất gốc", goal: 300, min: 10, desc: "Xây nền: từ loại, các thì cơ bản, từ vựng văn phòng – du lịch, học kỹ Part 1–2 và làm quen đủ 7 Part của đề." },
+  { id: 1, range: "300–450", label: "Cơ bản", goal: 450, min: 300, desc: "Mở rộng thì hoàn thành, hòa hợp chủ vị, so sánh, giới từ; luyện Part 2, 3, 5 và đọc e-mail, thông báo ngắn Part 7." },
+  { id: 2, range: "450–650", label: "Trung cấp", goal: 650, min: 450, desc: "Bị động, mệnh đề quan hệ, liên từ, V-ing/To V; luyện Part 3–4, Part 5–6 và đọc hiểu Part 7." },
   { id: 3, range: "650–800", label: "Khá", goal: 800, min: 650, desc: "Phân từ, câu điều kiện, từ vựng hợp đồng – sản xuất; tăng tốc Part 7 và làm đề tổng hợp." },
   { id: 4, range: "800–990", label: "Nâng cao", goal: 990, min: 800, desc: "Giả định, đảo ngữ, từ học thuật; giữ phong độ bằng đề tổng hợp và shadowing đoạn dài." }
 ];

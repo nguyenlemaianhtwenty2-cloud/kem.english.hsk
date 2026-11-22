@@ -132,6 +132,7 @@ Chỉ trả về JSON đúng dạng: {"questions":[{"q":"câu có ___","o":["A",
     const p = pct(right, cur.length);
     const prev = S.grammar[id] || { best: 0 };
     S.grammar[id] = { best: Math.max(prev.best || 0, p), last: p, at: today() };
+    if (p >= 60 && typeof markPlan === "function" && S.pending && S.pending.type === "gr") markPlan("gr");
     addXP(right * 2 + 5);
     bump("grammar");
     $("#gscore").innerHTML = `<b class="num" style="font-size:18px;color:${p >= 60 ? "var(--good)" : "var(--bad)"}">${right}/${cur.length} · ${p}%</b> ${p >= 60 ? "– đạt yêu cầu lộ trình" : "– xem lại lý thuyết và làm lại nhé"}`;

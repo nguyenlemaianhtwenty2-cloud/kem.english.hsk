@@ -4,14 +4,16 @@ const isZh = t => /[㐀-鿿]/.test(t || "");
 const pad2 = n => String(n).padStart(2, "0");
 
 /* ---- Nét chữ: tải thư viện và dữ liệu nét theo từng cấp khi cần ---- */
+/* thư mục chứa hsk.js: dữ liệu nét viết nằm cùng chỗ, nên web chạy được dù để file trong js/ hay chung một thư mục */
+const HZ_BASE = (() => { try { const s = document.currentScript && document.currentScript.src; return s ? s.slice(0, s.lastIndexOf("/") + 1) : "js/"; } catch (e) { return "js/"; } })();
 const Hz = {
   libP: null, lvP: {},
   add(src) { return new Promise((ok, no) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); }); },
   async need(text) {
-    if (!this.libP) this.libP = Promise.all([this.add("js/vendor/hanzi-writer.min.js"), this.add("js/hz-index.js")]).catch(e => { this.libP = null; throw e; });
+    if (!this.libP) this.libP = Promise.all([this.add(HZ_BASE + "vendor/hanzi-writer.min.js"), this.add(HZ_BASE + "hz-index.js")]).catch(e => { this.libP = null; throw e; });
     await this.libP;
     const lvs = new Set([...text].filter(isZh).map(c => Object.keys(HZ_IDX).find(l => HZ_IDX[l].includes(c))).filter(Boolean));
-    await Promise.all([...lvs].map(l => this.lvP[l] || (this.lvP[l] = this.add("js/hz-" + l + ".js").catch(e => { delete this.lvP[l]; throw e; }))));
+    await Promise.all([...lvs].map(l => this.lvP[l] || (this.lvP[l] = this.add(HZ_BASE + "hz-" + l + ".js").catch(e => { delete this.lvP[l]; throw e; }))));
   },
   async mount(box, text, { size = 84, play = true, quiz = false, onDone } = {}) {
     const chars = [...text].filter(isZh);

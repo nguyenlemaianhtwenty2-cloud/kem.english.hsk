@@ -41,7 +41,7 @@ const PART_GUIDE = [
 const needRate = sec => Math.pow(clamp((sec - 5) / 490, 0, 1), 1 / 1.08);
 
 function planData() {
-  const cur = S.profile.current, tgt = S.profile.target, MIN = { v: 20, t: 25, g: 25, tr: 10, sh: 10, pl: 30 };
+  const cur = S.profile.current, tgt = S.profile.target, MIN = { v: 20, t: 25, g: 25, gr: 10, tr: 10, sh: 10, pl: 30, rv: 10 };
   const left = routeBands().flatMap(b => ROADMAP[b].flatMap(w => w.tasks)).filter(t => !taskInfo(t).done);
   const all = routeBands().flatMap(b => ROADMAP[b].flatMap(w => w.tasks));
   const mins = left.reduce((a, t) => a + (t[0] === "x" ? EXAMS[t[1]].min + 10 : MIN[t[0]]), 0);
